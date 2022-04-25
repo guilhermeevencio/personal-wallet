@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
   const userName = useSelector(({ userInfo: { user } }) => user.userName);
-  const expenseValue = useSelector(({ savedExpenses: { expenses } }) => expenses);
-  const expensesValueSum = expenseValue
+  const expenses = useSelector(({ savedExpenses: { expenses } }) => expenses);
+  const expensesValueSum = expenses
     .reduce((acc, {value, currency, exchangeRates }) => acc + (Number(value) * Number(exchangeRates[currency].ask)), 0);
   
   return (

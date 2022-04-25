@@ -1,0 +1,23 @@
+.expense-container {
+  align-items: center;
+  color: black;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  margin: 16px;
+  padding: 8px;
+}
+
+.expense-item {
+  border: 2px solid red;
+  text-align: center;
+  width: 80%;
+}
+
+.expense-buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
