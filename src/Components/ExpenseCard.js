@@ -1,51 +1,82 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Styles/ExpenseCard.css';
+import { MdFastfood, MdWork, MdDirectionsBusFilled } from 'react-icons/md';
+import { FaHospital, FaUmbrellaBeach } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeExpense } from '../features/saveExpense';
+import ExpenseForm from './ExpenseForm';
 
-const ExpenseCard = () => {
+const ExpenseCards = (props) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleRemoveExpense = (event) => {
+    event.preventDefault();
+    const id = event.target.id;
+    dispatch(removeExpense(id));
+  }
+
+  const handleEdit = (event) => {
+    setIsEditing(!isEditing);
+  }
+
+  const selectedIcon = () => {
+    switch (props.expense.tag) {
+    case 'Alimentação':
+      return (<MdFastfood />)
+    case 'Transporte':
+      return (<MdDirectionsBusFilled />) 
+    case 'Saúde':
+      return (<FaHospital />)
+    case 'Trabalho':
+      return (<MdWork />)
+    default:
+        return (<FaUmbrellaBeach />)
+    }
+  }
+
   return (
-    <>
     <div className="expense-container">
-      <div className="expense-item">
-        <h4>Descrição</h4>
-        <p>iFood</p>
-      </div>
-      <div className="expense-item">
-        <h4>Tag</h4>
-        <p>Alimentação</p>
-      </div>
-      <div className="expense-item">
-        <h4>Valor</h4>
-        <p>30,00 USD</p>
-      </div>
-      <div className="expense-item">
-        <h4>Valor Convertido</h4>
-        <p>150,00 BRL</p>
-      </div>
+      {/* {console.log(propsState)} */}
+
+      {isEditing
+        ? <ExpenseForm />
+        : <>
+            <div className="expense-item icon">
+              { selectedIcon() }
+            </div>
+
+            <div className="expense-item">
+              <h4>{props.expense.description}</h4>
+            </div>
+
+            <div className="expense-item">
+              <p>{`${props.expense.value} ${ props.expense.currency }`}</p>
+            </div>
+
+            <div className="expense-item">
+              <p>150,00 BRL</p>
+          </div>
+          </>
+      }
+
       <div className="expense-buttons">
-        <button>Editar</button>
-        <button>Remover</button>
+        <button
+          type="button"
+          onClick={ handleEdit }
+        >
+          {isEditing ? 'Salvar' : 'Editar'}
+        </button>
+        <button
+          type="button"
+          onClick={ handleRemoveExpense }
+          id={ props.expense.id }
+        >
+          Remover
+        </button>
       </div>
     </div>
-    <div className="expense-container">
-      <div className="expense-item">
-        <h4>Descrição</h4>
-      </div>
-      <div className="expense-item">
-        <h4>Tag</h4>
-      </div>
-      <div className="expense-item">
-        <p>30,00 USD</p>
-      </div>
-      <div className="expense-item">
-        <p>150,00 BRL</p>
-      </div>
-      <div className="expense-buttons">
-        <button>Editar</button>
-        <button>Remover</button>
-      </div>
-    </div>
-    </>
   )
 }
 
-export default ExpenseCard
+export default ExpenseCards

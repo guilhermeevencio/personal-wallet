@@ -13,8 +13,8 @@ const Home = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addUser({userName, userPassword}))
-    history('/wallet')
+    dispatch(addUser({userName, userPassword}));
+    history('/wallet');
   }
 
   const handleChange = ({ target }) => {
