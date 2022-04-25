@@ -25,6 +25,16 @@ export const fetchCurrenciesToExpense = createAsyncThunk(
 const saveExpenseSlice = createSlice({
   name: 'expenses',
   initialState,
+  reducers: {
+    removeExpense(state, action) {
+      console.log(state.expenses.id);
+      const filteredExpenses = state.expenses.filter(({ id }) => Number(action.payload) !== Number(id));
+      return {
+        ...state,
+        expenses: filteredExpenses, 
+      };
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchCurrenciesToExpense.pending, (state, action) => {
       state.status = 'pending';
@@ -38,4 +48,5 @@ const saveExpenseSlice = createSlice({
   }
 })
 
+export const { removeExpense } = saveExpenseSlice.actions;
 export default saveExpenseSlice.reducer;

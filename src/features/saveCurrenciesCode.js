@@ -9,7 +9,7 @@ const initialState = {
 
 export const fetchCurrencies = createAsyncThunk(
   'currencies/fetchcurrencies',
-  async () => await fetchCurrenciesData()
+  async () => await fetchCurrenciesData(),
 );
 
 const currenciesCodeSlice = createSlice({
