@@ -37,10 +37,8 @@ const ExpenseForm = () => {
         <select
           id="currency-input"
           name="currency"
-          onClick={ handleChange }
-          defaultValue="Selecione a moeda"
+          onChange={ handleChange }
         >
-          <option disabled>Selecione a moeda</option>
           { currencies.length !== 0
             && (currencies.map((currency, index) => (<option key={ index }>{currency}</option>)))
           }
@@ -48,9 +46,8 @@ const ExpenseForm = () => {
         <select
           id="method-input"
           name="method"
-          onClick={ handleChange }
+          onChange={ handleChange }
         >
-          <option disabled>Selecione o método</option>
           <option>Dinheiro</option>
           <option>Cartão de crédito</option>
           <option>Cartão de débito</option>
@@ -58,10 +55,8 @@ const ExpenseForm = () => {
         <select
           id="tag-input"
           name="tag"
-          defaultValue="Selecione a Categoria"
-          onClick={ handleChange }
+          onChange={ handleChange }
         >
-          <option disabled>Selecione a categoria</option>
           <option>Alimentação</option>
           <option>Lazer</option>
           <option>Trabalho</option>
