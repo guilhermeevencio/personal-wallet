@@ -34,6 +34,17 @@ const saveExpenseSlice = createSlice({
         expenses: filteredExpenses, 
       };
     },
+    editExpense(state, action) {
+      return {
+        ...state,
+        expenses: state.expenses.map((expense) => {
+          if(Number(action.payload.id) === Number(expense.id)) {
+            expense = action.payload;
+          }
+          return expense;
+        }),
+      }
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCurrenciesToExpense.pending, (state, action) => {
@@ -48,5 +59,5 @@ const saveExpenseSlice = createSlice({
   }
 })
 
-export const { removeExpense } = saveExpenseSlice.actions;
+export const { removeExpense, editExpense } = saveExpenseSlice.actions;
 export default saveExpenseSlice.reducer;
