@@ -6,10 +6,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { configureStore  } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux'
 import userInfoSlice from './features/userInfo';
+import currenciesCodeSlice from './features/saveCurrenciesCode';
 
 export const store = configureStore({
   reducer: {
     userInfoSlice,
+    currenciesCodeSlice,
   }
 })
 
