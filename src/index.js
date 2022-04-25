@@ -7,11 +7,13 @@ import { configureStore  } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux'
 import userInfoSlice from './features/userInfo';
 import currenciesCodeSlice from './features/saveCurrenciesCode';
+import saveExpenseSlice from './features/saveExpense';
 
 export const store = configureStore({
   reducer: {
-    userInfoSlice,
-    currenciesCodeSlice,
+    userInfo: userInfoSlice,
+    currenciesCode: currenciesCodeSlice,
+    savedExpenses: saveExpenseSlice,
   }
 })
 
