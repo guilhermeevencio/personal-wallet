@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Styles/ExpenseCard.css';
 import { MdFastfood, MdWork, MdDirectionsBusFilled } from 'react-icons/md';
 import { FaHospital, FaUmbrellaBeach } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeExpense, editExpense } from '../features/saveExpense';
-import ExpenseForm from './ExpenseForm';
 
 const ExpenseCards = (props) => {
 const {
@@ -72,8 +71,6 @@ const {
 
   return (
     <div className="expense-container">
-      {/* {console.log(propsState)} */}
-
       {isEditing
         ? <form id="edit-form" >
             <input
@@ -134,7 +131,7 @@ const {
 
             <div className="expense-item">
               <p>150,00 BRL</p>
-          </div>
+            </div>
           </>
       }
 
@@ -171,4 +168,4 @@ const {
   )
 }
 
-export default ExpenseCards
+export default ExpenseCards;
