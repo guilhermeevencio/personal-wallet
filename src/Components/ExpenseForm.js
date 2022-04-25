@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchCurrenciesToExpense, saveExpense as saveExpenseAction } from '../features/saveExpense';
 
 const ExpenseForm = () => {
-  const currencies = useSelector((state) => state.currenciesCodeSlice.currencies)
+  const dispatch = useDispatch();
+  const currencies = useSelector(({ currenciesCode }) => currenciesCode.currencies)
   const [expense, setExpense] = useState({
     currency: 'USD',
     description: '',
@@ -18,9 +20,9 @@ const ExpenseForm = () => {
     })
   }
 
-   const handleSubmit = (event) => {
+   const handleSubmit = async (event) => {
      event.preventDefault();
-     console.log(expense);
+     dispatch(fetchCurrenciesToExpense(expense));
    } 
   return (
     <div>
@@ -36,7 +38,9 @@ const ExpenseForm = () => {
           id="currency-input"
           name="currency"
           onClick={ handleChange }
+          defaultValue="Selecione a moeda"
         >
+          <option disabled>Selecione a moeda</option>
           { currencies.length !== 0
             && (currencies.map((currency, index) => (<option key={ index }>{currency}</option>)))
           }
@@ -46,6 +50,7 @@ const ExpenseForm = () => {
           name="method"
           onClick={ handleChange }
         >
+          <option disabled>Selecione o método</option>
           <option>Dinheiro</option>
           <option>Cartão de crédito</option>
           <option>Cartão de débito</option>
@@ -56,6 +61,7 @@ const ExpenseForm = () => {
           defaultValue="Selecione a Categoria"
           onClick={ handleChange }
         >
+          <option disabled>Selecione a categoria</option>
           <option>Alimentação</option>
           <option>Lazer</option>
           <option>Trabalho</option>
