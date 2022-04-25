@@ -3,11 +3,33 @@ import './Styles/ExpenseCard.css';
 import { MdFastfood, MdWork, MdDirectionsBusFilled } from 'react-icons/md';
 import { FaHospital, FaUmbrellaBeach } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeExpense } from '../features/saveExpense';
+import { removeExpense, editExpense } from '../features/saveExpense';
 import ExpenseForm from './ExpenseForm';
 
 const ExpenseCards = (props) => {
+const {
+  value,
+  description,
+  currency,
+  method,
+  tag,
+  exchangeRates,
+  id } = props.expense;
+
   const [isEditing, setIsEditing] = useState(false);
+
+  const [editedExpense, setEditedExpense] = useState({
+    currency,
+    description,
+    method,
+    tag,
+    value,
+    exchangeRates,
+    id,
+  });
+
+  const currencies = useSelector(({ currenciesCode }) => currenciesCode.currencies)
+
   const dispatch = useDispatch();
 
   const handleRemoveExpense = (event) => {
@@ -17,6 +39,19 @@ const ExpenseCards = (props) => {
   }
 
   const handleEdit = (event) => {
+    setIsEditing(!isEditing);
+  }
+
+  const handleChange = ({ target }) => {
+    setEditedExpense({
+      ...editedExpense, 
+      [target.name]: target.value,
+    })
+    console.log(editedExpense);
+  }
+
+  const handleSave = (event) => {
+    dispatch(editExpense(editedExpense));
     setIsEditing(!isEditing);
   }
 
@@ -40,7 +75,50 @@ const ExpenseCards = (props) => {
       {/* {console.log(propsState)} */}
 
       {isEditing
-        ? <ExpenseForm />
+        ? <form id="edit-form" >
+            <input
+            onChange={ handleChange }
+            type="number"
+            name="value"
+            id="edit-description"/>
+            <select
+              id="edit-currency-input"
+              name="currency"
+              onChange={ handleChange }
+            >
+              { currencies.length !== 0
+                && (currencies.map((currency, index) => (<option key={ index }>{currency}</option>)))
+              }
+            </select>
+            <select
+              id="edit-method-input"
+              name="method"
+              onChange={ handleChange }
+            >
+              <option>Dinheiro</option>
+              <option>Cartão de crédito</option>
+              <option>Cartão de débito</option>
+            </select>
+            <select
+              id="edit-tag-input"
+              name="tag"
+              onChange={ handleChange }
+            >
+              <option>Alimentação</option>
+              <option>Lazer</option>
+              <option>Trabalho</option>
+              <option>Transporte</option>
+              <option>Saúde</option>
+            </select>
+            <input
+              type="text"
+              name="description"
+              id="edit-description-input"
+              onChange={ handleChange }
+              placeholder="Descrição"
+            />
+
+        </form>
         : <>
             <div className="expense-item icon">
               { selectedIcon() }
@@ -61,12 +139,26 @@ const ExpenseCards = (props) => {
       }
 
       <div className="expense-buttons">
-        <button
-          type="button"
-          onClick={ handleEdit }
-        >
-          {isEditing ? 'Salvar' : 'Editar'}
-        </button>
+        {!isEditing
+          ? (
+            <button
+              type="button"
+              onClick={ handleEdit }
+              id={ props.expense.id }
+            >
+              Editar
+            </button>
+          )
+          : (
+            <button
+            type="button"
+            onClick={ handleSave }
+            id={ props.expense.id }
+            >
+              Salvar
+            </button>
+          )
+        }
         <button
           type="button"
           onClick={ handleRemoveExpense }
