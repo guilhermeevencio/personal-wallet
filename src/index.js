@@ -5,19 +5,22 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { configureStore  } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux'
+import userInfoSlice from './features/userInfo';
 
-// export const store = configureStore({
-//   // reducer
-// })
+export const store = configureStore({
+  reducer: {
+    userInfoSlice,
+  }
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <Provider store={ store }> */}
+    <Provider store={ store }>
       <Router>
         <App />
       </Router>
-    {/* </Provider> */}
+    </Provider>
   </React.StrictMode>
 );
 
