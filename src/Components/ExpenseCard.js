@@ -77,11 +77,13 @@ const {
             onChange={ handleChange }
             type="number"
             name="value"
+            value={ editedExpense.value }
             id="edit-description"/>
             <select
               id="edit-currency-input"
               name="currency"
               onChange={ handleChange }
+              value={ editedExpense.currency }
             >
               { currencies.length !== 0
                 && (currencies.map((currency, index) => (<option key={ index }>{currency}</option>)))
@@ -91,6 +93,7 @@ const {
               id="edit-method-input"
               name="method"
               onChange={ handleChange }
+              value={ editedExpense.method }
             >
               <option>Dinheiro</option>
               <option>Cartão de crédito</option>
@@ -100,6 +103,7 @@ const {
               id="edit-tag-input"
               name="tag"
               onChange={ handleChange }
+              value={ editedExpense.tag }
             >
               <option>Alimentação</option>
               <option>Lazer</option>
@@ -113,6 +117,7 @@ const {
               id="edit-description-input"
               onChange={ handleChange }
               placeholder="Descrição"
+              value={ editedExpense.description }
             />
 
         </form>

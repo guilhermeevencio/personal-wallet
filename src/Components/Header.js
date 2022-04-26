@@ -10,7 +10,8 @@ const Header = () => {
   return (
     <div>
       <h3>{`Olá, ${ userName }!`}</h3>
-      <h3>{`Total: ${ expensesValueSum.toFixed(2) } BRL`}</h3>
+      {/* <h3>{`Total: ${ expensesValueSum.toFixed(2) } BRL`}</h3> */}
+      <h3>{ expensesValueSum.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }</h3>
     </div>
   )
 }
