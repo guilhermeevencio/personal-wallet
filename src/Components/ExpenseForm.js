@@ -25,7 +25,7 @@ const ExpenseForm = () => {
      dispatch(fetchCurrenciesToExpense(expense));
    } 
   return (
-    <div className="m-8 bg-neutral-200 rounded-md drop-shadow-md border-2 border-slate-300">
+    <div className="m-8 bg-neutral-100 rounded-xl drop-shadow-xl">
       <form className="p-4">
 
         <div className="flex justify-center rounded-md m-2">
@@ -51,7 +51,7 @@ const ExpenseForm = () => {
 
         <div className="flex flex-col items-center rounded-md m-2">
           <select
-            className="rounded-md p-2 border-none drop-shadow-md text-center w-48 m-2"
+            className="rounded-md p-2 border-none drop-shadow-md text-center w-5/6 m-2"
             id="method-input"
             name="method"
             onChange={ handleChange }
@@ -61,7 +61,7 @@ const ExpenseForm = () => {
             <option>Cartão de débito</option>
           </select>
           <select
-            className="rounded-md p-2 border-none drop-shadow-md text-center w-40 m-2"
+            className="rounded-md p-2 border-none drop-shadow-md text-center w-5/6 m-2"
             id="tag-input"
             name="tag"
             onChange={ handleChange }
@@ -84,7 +84,7 @@ const ExpenseForm = () => {
             placeholder="Descrição"
           />
           <button
-          className="rounded-md p-4 drop-shadow-md text-center w-52 m-8 bg-cyan-700 text-slate-50 text-xl font-semibold"
+          className="rounded-md p-4 drop-shadow-lg text-center text-slate-50 w-52 m-8 bg-cyan-700 text-xl font-semibold"
           id="submit-expense-button"
           onClick={ handleSubmit }
           >

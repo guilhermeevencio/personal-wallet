@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../features/userInfo';
 
+import { motion } from 'framer-motion'
+
 const Home = () => {
   const [userName, setUserName] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -33,7 +35,9 @@ const Home = () => {
   }
 
   return (
-    <div id="home_container">
+    <div
+      id="home_container"
+    >
       <h1 id="home_title">MyWallet</h1>
       <form>
         <input

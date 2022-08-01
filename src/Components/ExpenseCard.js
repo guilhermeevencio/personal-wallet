@@ -70,7 +70,7 @@ const {
   }
 
   return (
-    <div className="expense-container drop-shadow-xl">
+    <div className=" flex  flex-col justify-center items-center drop-shadow-xl ">
       {isEditing
         ? <form id="edit-form" >
             <input
@@ -121,26 +121,26 @@ const {
             />
 
         </form>
-        : <>
-            <div className="expense-item icon">
+        : <div className="flex flex-col items-center justify-center drop-shadow-md bg-slate-100 rounded-md p-4 w-5/6">
+            <div className="text-4xl">
               { selectedIcon() }
             </div>
 
-            <div className="expense-item">
+            <div className="">
               <h4>{props.expense.description}</h4>
             </div>
 
-            <div className="expense-item">
+            <div className="">
               <p>{`${props.expense.value} ${ props.expense.currency }`}</p>
             </div>
 
-            <div className="expense-item">
+            <div className="">
               <p>150,00 BRL</p>
             </div>
-          </>
+          </div>
       }
 
-      <div className="expense-buttons">
+      <div className="">
         {!isEditing
           ? (
             <button
