@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ExpenseForm from '../Components/ExpenseForm';
-import Header from '../Components/Header';
-import ExpenseCards from '../Components/ExpenseCard';
-import { fetchCurrencies } from '../features/saveCurrenciesCode';
+import ExpenseForm from '../../Components/ExpenseForm';
+import Header from '../../Components/Header';
+import ExpenseCards from '../../Components/ExpenseCard';
+import { fetchCurrencies } from '../../features/saveCurrenciesCode';
 
 const Wallet = () => {
   const [isFormEnabled, setIsFormEnabled] = useState(false)

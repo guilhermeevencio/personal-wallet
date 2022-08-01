@@ -70,7 +70,7 @@ const {
   }
 
   return (
-    <div className="expense-container">
+    <div className="expense-container drop-shadow-xl">
       {isEditing
         ? <form id="edit-form" >
             <input

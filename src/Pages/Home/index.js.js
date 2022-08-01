@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../features/userInfo';
+import { addUser } from '../../features/userInfo';
 
 const Home = () => {
   const [userName, setUserName] = useState('');
