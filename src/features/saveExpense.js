@@ -27,7 +27,6 @@ const saveExpenseSlice = createSlice({
   initialState,
   reducers: {
     removeExpense(state, action) {
-      console.log(state.expenses.id);
       const filteredExpenses = state.expenses.filter(({ id }) => Number(action.payload) !== Number(id));
       return {
         ...state,
