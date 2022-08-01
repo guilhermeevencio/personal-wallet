@@ -1,8 +1,9 @@
-import './App.css';
+// import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import Wallet from './Pages/Wallet';
 import NotFound from './Pages/NotFound';
+import './index.css'
 
 function App() {
   return (

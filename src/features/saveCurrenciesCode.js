@@ -16,7 +16,7 @@ const currenciesCodeSlice = createSlice({
   name: 'currencies',
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(fetchCurrencies.pending, (state, action) => {
+    builder.addCase(fetchCurrencies.pending, (state, _action) => {
       state.status = 'pending';
     }).addCase(fetchCurrencies.fulfilled, (state, action) => {
       state.currencies = Object.keys(action.payload);
