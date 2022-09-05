@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <div
       id="home_container"
-      className="m-8 p-8 bg-neutral-100 rounded-xl h-4/5 md:w-3/6 mx-auto drop-shadow-xl flex flex-col justify-center items-center"
+      className="m-8 p-8 bg-neutral-100 w-5/6 rounded-xl h-4/5 md:w-3/6 mx-auto drop-shadow-xl flex flex-col justify-center items-center"
     >
       <h1 id="home_title" className="text-5xl font-black text-cyan-700 mb-16">My Wallet</h1>
       <form className="w-4/6 flex flex-col">
