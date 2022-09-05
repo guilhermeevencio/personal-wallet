@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import Home from '../Pages/Home/index.js';
+import Home from '../Pages/Home';
 import NotFound from '../Pages/NotFound/index.js';
 import Wallet from '../Pages/Wallet/index.js';
 
