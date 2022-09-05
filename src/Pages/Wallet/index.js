@@ -38,11 +38,13 @@ const Wallet = () => {
           { isFormEnabled ? < IoChevronUpOutline /> : < IoChevronDownOutline /> }
         </button>
       </div>
+      <div className="flex flex-col items-center gap-8">
         {expenses.length !== 0
           && expenses.map((expense, index) => (
             <ExpenseCards expense={ expense } key={ index }/>
           ))
         }
+      </div>
     </div>
   )
 }

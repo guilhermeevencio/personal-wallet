@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchCurrenciesToExpense, saveExpense as saveExpenseAction } from '../features/saveExpense';
+import { fetchCurrenciesToExpense } from '../features/saveExpense';
 
 const ExpenseForm = () => {
   const dispatch = useDispatch();

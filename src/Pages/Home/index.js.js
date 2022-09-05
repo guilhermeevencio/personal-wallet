@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../features/userInfo';
 
-import { motion } from 'framer-motion'
-
 const Home = () => {
   const [userName, setUserName] = useState('');
   const [userPassword, setUserPassword] = useState('');
