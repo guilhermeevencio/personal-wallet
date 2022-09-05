@@ -16,7 +16,7 @@ const Wallet = () => {
     dispatch(fetchCurrencies());
   }, [dispatch]);
   return (
-    <div>
+    <div className="transition duration-150 ease-in-out">
       <Header />
       <div className="flex flex-col justify-center items-center">
         {isFormEnabled
