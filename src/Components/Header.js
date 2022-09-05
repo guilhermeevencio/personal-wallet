@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center bg-slate-900 p-4">
       <div>
-        <h2 className="font-extrabold text-2xl text-green-500">Personal </h2>
+        <h2 className="font-extrabold text-2xl text-green-500">My </h2>
         <h2 className="font-extrabold text-2xl text-slate-400">Wallet</h2>
       </div>
       <div className="flex flex-col items-start">
